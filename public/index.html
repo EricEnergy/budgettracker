@@ -20,11 +20,11 @@
 <body>
   <div class="callout large">
     <div class="row column text-center">
-      <h1>Expenses Tracker</h1>
+      <h1>Simmons Budget Tracker</h1>
     </div>
 
     <div class="row column text-center">
-      <h3>Your current balance is: $<span id="balance">2000</span></h3>
+      <h3>Your current balance is: $<span id="balance">0</span></h3>
     </div>
   </div>
 
@@ -33,26 +33,26 @@
       <div class="medium-6 columns ">Name
         <input type="text" class="form-control" id="budgetName" aria-describedby="budgetName"
           placeholder="Enter Deposit Name" />Amount
-        <input id="budget" type="number" class="form-control" placeholder="Enter Deposit amounts" />
+        <input id="dollarAmount" type="number" class="form-control" placeholder="Enter Deposit amounts" />
         <button id="submit1" class="button alert">Submit</button>
       </div>
 
       <div class="medium-6 columns">Name
         <input type="text" class="form-control" id="expense" aria-describedby="expenseName"
           placeholder="Enter expense Name" />Amount
-        <input id="price" type="number" class="form-control" placeholder="price" /></span>
+        <input id="price" type="number" class="form-control" placeholder="Enter expence amount" /></span>
         <button id="submit2" class="btn success button">Submit</button>
       </div>
     </div>
 
-    <div class="row">
+    <div class="row w3-third">
     
 
-      <div class="medium-6 columns">
+      <div class="medium-6 columns ">
         <h1 class="text-center">Deposits:</h1>
         <ul id="budget-list" class="list-group"></ul>
       </div>
-      <div class="medium-6 columns">
+      <div class="medium-6 columns ">
         <h1 class="text-center">Expenses:</h1>
         <ul id="expenses-list" class="list-group"></ul>
       </div>
