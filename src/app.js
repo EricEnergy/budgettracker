@@ -1,9 +1,16 @@
 const priceEl = document.getElementById("price");
 const balanceEl = document.getElementById("balance");
 const expenseEl = document.getElementById("expense");
+
+//Where the info will be shown
 const expensesListEl = document.getElementById("expenses-list");
-const submitBtn = document.getElementById("submit");
-const resetBtn = document.getElementById("reset");
+const expensesListEl = document.getElementById("expenses-list");
+
+//submit buttons
+const submit1 = document.getElementById("submit1");
+const submit2 = document.getElementById("submit2");
+
+// require functions here
 const calc = require("./calculations");
 
 function addToList(name, price) {
@@ -28,11 +35,12 @@ function submit(e) {
 
 function reset(e) {
   e.preventDefault();
- 
- 
+  addToMoneyList(expenseEl.value, priceEl.value);
+  expenseEl.value = "";
+  priceEl.value = "";
 }
 
-submitBtn.onclick = submit;
-resetBtn.onclick = reset;
+submit1.onclick = reset;
+submit2.onclick = submit;
 
 //
