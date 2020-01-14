@@ -81,31 +81,20 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = "./src/app.js");
+/******/ 	return __webpack_require__(__webpack_require__.s = "./src/expenseChart.js");
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ "./src/app.js":
-/*!********************!*\
-  !*** ./src/app.js ***!
-  \********************/
-/*! no exports provided */
+/***/ "./src/expenseChart.js":
+/*!*****************************!*\
+  !*** ./src/expenseChart.js ***!
+  \*****************************/
+/*! exports provided: expensesChart, updateChart, resetChart */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _indexdb__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./indexdb */ \"./src/indexdb.js\");\n\n\n\nconst balanceEl = document.getElementById(\"balance\");\nconst budgetName = document.getElementById(\"budgetName\");\nconst dollarAmount = document.getElementById(\"dollarAmount\");\nconst expenseEl = document.getElementById(\"expense\");\nconst priceEl = document.getElementById(\"price\");\n\n//Where the info will be shown\nconst expensesListEl = document.getElementById(\"expenses-list\");\nconst budgetListEl = document.getElementById(\"budget-list\");\n\n//submit buttons\nconst submit1 = document.getElementById(\"submit1\");\nconst submit2 = document.getElementById(\"submit2\");\nconst submit3 = document.getElementById(\"submit3\");\n\n// require functions here\nconst calc = __webpack_require__(/*! ./calculations */ \"./src/calculations.js\");\n\nfunction addToList(name, price) {\n  expensesListEl.innerHTML += `<li class=\"list-group-item\" placeholder=\"unamed\">Name: ${name}\n    <span class=\"ml-4\">Price: ${price}</span></li>`;\n}\n//still need to build this out\nfunction addToMoneyList(name, price) {\n  budgetListEl.innerHTML += `<li class=\"list-group-item\">Name: ${name}\n    <span class=\"ml-4\">Price: ${price}</span></li>`;\n}\n\n\n\nfunction deposit(e) {\n  e.preventDefault();\n  addToMoneyList(budgetName.value, dollarAmount.value);\n  var bal = parseInt(balanceEl.innerText);\n  var dollAm = parseInt(dollarAmount.value);\n  const total = calc.add(Number(bal), dollAm);\n  balanceEl.innerText = total;\n  budgetName.value = \"\";\n  dollarAmount.value = \"\";\n\n  Object(_indexdb__WEBPACK_IMPORTED_MODULE_0__[\"useIndexedDb\"])(\"budget\", \"budgetStore\", \"put\", {\n    name: budgetName.innerHTML,\n    value: dollarAmount.innerHTML\n  });\n}\n\n\nfunction expense(e) {\n  e.preventDefault();\n  addToList(expenseEl.value, priceEl.value);\n  const total = calc.subtract(Number(balanceEl.innerText), priceEl.value);\n  balanceEl.innerText = total;\n  expenseEl.value = \"\";\n  priceEl.value = \"\";\n  Object(_indexdb__WEBPACK_IMPORTED_MODULE_0__[\"useIndexedDb\"])(\"budget\", \"budgetStore\", \"put\", {\n    name: expenseEl.innerHTML,\n    value: priceEl.innerHTML\n  });\n}\n\nfunction reset(e) {\n  e.preventDefault();\n  Object(_indexdb__WEBPACK_IMPORTED_MODULE_0__[\"useIndexedDb\"])(\"budget\", \"budgetStore\", \"clear\")\n}\n\nsubmit1.onclick = deposit;\nsubmit2.onclick = expense;\nsubmit3.onclick = reset;\n\n//# sourceURL=webpack:///./src/app.js?");
-
-/***/ }),
-
-/***/ "./src/calculations.js":
-/*!*****************************!*\
-  !*** ./src/calculations.js ***!
-  \*****************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-eval("function subtract(a,b) {\r\n    return a - b;\r\n}\r\n\r\nfunction add(a,b) {\r\n    return a + b;\r\n}\r\n\r\n\r\nmodule.exports = {subtract, add}\n\n//# sourceURL=webpack:///./src/calculations.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"expensesChart\", function() { return expensesChart; });\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"updateChart\", function() { return updateChart; });\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"resetChart\", function() { return resetChart; });\n/* harmony import */ var _indexdb__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./indexdb */ \"./src/indexdb.js\");\n\n\nconst ctx = document.getElementById(\"myChart\").getContext(\"2d\");\nconst expensesChart = new Chart(ctx, {\n  type: \"bar\",\n  data: {\n    labels: [],\n    datasets: [\n      {\n        label: \"Expense cost in $\",\n        data: [],\n        backgroundColor: [\n          \"rgba(255, 99, 132, 0.2)\",\n          \"rgba(54, 162, 235, 0.2)\",\n          \"rgba(255, 206, 86, 0.2)\",\n          \"rgba(75, 192, 192, 0.2)\",\n          \"rgba(153, 102, 255, 0.2)\",\n          \"rgba(255, 159, 64, 0.2)\"\n        ],\n        borderColor: [\n          \"rgba(255, 99, 132, 1)\",\n          \"rgba(54, 162, 235, 1)\",\n          \"rgba(255, 206, 86, 1)\",\n          \"rgba(75, 192, 192, 1)\",\n          \"rgba(153, 102, 255, 1)\",\n          \"rgba(255, 159, 64, 1)\"\n        ],\n        borderWidth: 1\n      }\n    ]\n  },\n  options: {\n    title: {\n      text: \"Expenses Chart\"\n    },\n    scales: {\n      yAxes: [\n        {\n          ticks: {\n            beginAtZero: true\n          }\n        }\n      ]\n    }\n  }\n});\n\nfunction updateChart(expenseChart, name, value) {\n  expenseChart.data.labels.push(name);\n  expenseChart.data.datasets.forEach(dataset => {\n    dataset.data.push(value);\n  });\n  expenseChart.update();\n}\n\nfunction resetChart(expenseChart) {\n  expenseChart.data.labels = [];\n  expenseChart.data.datasets.forEach(dataset => {\n    dataset.data = [];\n  });\n  expenseChart.update();\n}\n\nObject(_indexdb__WEBPACK_IMPORTED_MODULE_0__[\"useIndexedDb\"])(\"budget\", \"budgetStore\", \"get\").then(results => {\n  results.forEach(expense => {\n    updateChart(expensesChart, expense.name, expense.value);\n  });\n});\n\n\n//# sourceURL=webpack:///./src/expenseChart.js?");
 
 /***/ }),
 

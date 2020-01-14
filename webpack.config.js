@@ -1,10 +1,14 @@
 const config = {
-    entry: "./src/app.js",
-    output: {
-        path: __dirname + "/dist",
-        filename: "bundle.js"
+    entry: {
+      app: "./src/app.js",
+      chart: "./src/expenseChart.js"
     },
-    mode: "development"
-}
+    output: {
+      path: __dirname + "/dist",
+      filename: "[name].bundle.js"
+    },
+    mode: "development",
+  };
 
-module.exports = config;
+  module.exports = config;
+  

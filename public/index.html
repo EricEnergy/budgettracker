@@ -18,6 +18,21 @@
 
 
 <body>
+
+  <div class="top-bar" id="realEstateMenu">
+    <div class="top-bar-left">
+      <ul class="menu">
+        <li class="menu-text">Budget Tracker</li>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="chart.html">Chart</a></li>
+      </ul>
+    </div>
+    <div class="top-bar-right">
+
+    </div>
+  </div>
+
+
   <div class="callout large">
     <div class="row column text-center">
       <h1>Simmons Budget Tracker</h1>
@@ -25,42 +40,42 @@
 
     <div class="row column text-center">
       <h3>Your current balance is: $<span id="balance">0</span></h3>
+      <button id="submit3" class="btn success button">Reset</button>
     </div>
+
   </div>
 
 
-    <div class="row">
-      <div class="medium-6 columns ">Name
-        <input type="text" class="form-control" id="budgetName" aria-describedby="budgetName"
-          placeholder="Enter Deposit Name" />Amount
-        <input id="dollarAmount" type="number" class="form-control" placeholder="Enter Deposit amounts" />
-        <button id="submit1" class="button alert">Submit</button>
-      </div>
-
-      <div class="medium-6 columns">Name
-        <input type="text" class="form-control" id="expense" aria-describedby="expenseName"
-          placeholder="Enter expense Name" />Amount
-        <input id="price" type="number" class="form-control" placeholder="Enter expence amount" /></span>
-        <button id="submit2" class="btn success button">Submit</button>
-      </div>
+  <div class="row">
+    <div class="medium-6 columns ">Name
+      <input type="text" class="form-control" id="budgetName" aria-describedby="budgetName"
+        placeholder="Enter Deposit Name" />Amount
+      <input id="dollarAmount" type="number" class="form-control" placeholder="Enter Deposit amount" />
+      <button id="submit1" class="button alert">Submit</button>
     </div>
 
-    <div class="row w3-third">
-    
-
-      <div class="medium-6 columns ">
-        <h1 class="text-center">Deposits:</h1>
-        <ul id="budget-list" class="list-group"></ul>
-      </div>
-      <div class="medium-6 columns ">
-        <h1 class="text-center">Expenses:</h1>
-        <ul id="expenses-list" class="list-group"></ul>
-      </div>
+    <div class="medium-6 columns">Name
+      <input type="text" class="form-control" id="expense" aria-describedby="expenseName"
+        placeholder="Enter expense Name" />Amount
+      <input id="price" type="number" class="form-control" placeholder="Enter expense amount" /></span>
+      <button id="submit2" class="btn success button">Submit</button>
     </div>
+  </div>
+
+  <div class="row w3-third">
 
 
-  <script type="text/javascript" src="../dist/bundle.js"></script>
+    <div class="medium-6 columns ">
+      <h1 class="text-center">Deposits:</h1>
+      <ul id="budget-list" class="list-group"></ul>
+    </div>
+    <div class="medium-6 columns ">
+      <h1 class="text-center">Expenses:</h1>
+      <ul id="expenses-list" class="list-group"></ul>
+    </div>
+  </div>
 
+  <script type="text/javascript" src="../dist/app.bundle.js"></script>
   <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
   <script src="https://dhbhdrzi4tiry.cloudfront.net/cdn/sites/foundation.js"></script>
 </body>
