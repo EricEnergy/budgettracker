@@ -1,4 +1,4 @@
-# Unit 18 PWA Homework: Online/Offline Budget Trackers
+# PWA Homework: Online/Offline Budget Trackers
 
 Added functionality to s existing Budget Tracker application to allow for offline access and functionality as well as being able to enter deposits.
 
