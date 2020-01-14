@@ -1,22 +1,14 @@
 import {useIndexedDb} from "./indexdb";
-
-
 const balanceEl = document.getElementById("balance");
 const budgetName = document.getElementById("budgetName");
 const dollarAmount = document.getElementById("dollarAmount");
 const expenseEl = document.getElementById("expense");
 const priceEl = document.getElementById("price");
-
-//Where the info will be shown
 const expensesListEl = document.getElementById("expenses-list");
 const budgetListEl = document.getElementById("budget-list");
-
-//submit buttons
 const submit1 = document.getElementById("submit1");
 const submit2 = document.getElementById("submit2");
 const submit3 = document.getElementById("submit3");
-
-// require functions here
 const calc = require("./calculations");
 
 function addToList(name, price) {

@@ -1,3 +1,4 @@
+const Chart = require("chart.js");
 import { useIndexedDb } from "./indexdb";
 
 const ctx = document.getElementById("myChart").getContext("2d");
