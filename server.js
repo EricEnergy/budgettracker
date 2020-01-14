@@ -22,6 +22,7 @@ useFindAndModify: false
 });
 
 
+require("./routes/htmlRoutes.js")(app);
 
 app.listen(PORT, () => {
   console.log(`App running on port ${PORT}!`);
