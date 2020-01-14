@@ -1,9 +1,9 @@
 const FILES_TO_CACHE = [
     '/',
-    'index.html',
-    'chart.html',
-    'app.bundle.js',
-    'chart.bundle.js'
+    '/index.html',
+    '/chart.html',
+    '/app.bundle.js',
+    '/chart.bundle.js'
 ];
 
 const CACHE_NAME = 'static-cache-v1';
